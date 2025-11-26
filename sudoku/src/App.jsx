@@ -1,4 +1,5 @@
-// This is just showing you the structure
+import React from 'react'
+
 function App() {
   return (
     <div>

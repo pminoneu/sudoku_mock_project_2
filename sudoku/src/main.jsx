@@ -8,7 +8,6 @@ import App from './App.jsx'
 // Import styles
 import './style.css'
 
-// Tell React to render your App in the #app div
 ReactDOM.createRoot(document.getElementById('app')).render(
   <App />
 )
