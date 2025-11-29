@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function Cell(props) {
 
     // set up state to manage the cell's current value
-    const [currentValue, setCurrentValue] = useState(props.value); 
+    const [currentValue, setCurrentValue] = useState(props.value);
+
+    // keep local state in sync if parent updates the value
+    useEffect(() => {
+        setCurrentValue(props.value);
+    }, [props.value]);
    
     // determine if the cell is on the right or bottom edge of a 3x3 box for styling
     const isRightEdge = (props.colIndex + 1) % 3 === 0 && props.colIndex !== 8;
@@ -14,7 +19,8 @@ function Cell(props) {
     if (isRightEdge) className += ' border-right';
     if (isBottomEdge) className += ' border-bottom';
 
-    const isEditable = props.value === 0;
+    // editable comes from parent (whether the starting cell was empty)
+    const isEditable = props.editable;
 
     const handleChange = (event) => {
         let newValue = event.target.value;
@@ -49,4 +55,3 @@ function Cell(props) {
 }
 
 export default Cell
-
