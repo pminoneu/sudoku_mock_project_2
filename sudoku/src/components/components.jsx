@@ -30,7 +30,7 @@ export function Timer({ seconds }) {
 export function SideNav() {
   return (
     <div className="sidenav bebas-neue-regular sidenav-font">
-        <Link to="/home">Home</Link>
+        <Link to="/">Home</Link>
         <Link to="/login">Login</Link>
         <Link to="/game">Play</Link>
         <Link to="/rules">Rules</Link>

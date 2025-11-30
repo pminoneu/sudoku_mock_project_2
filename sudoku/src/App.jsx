@@ -12,7 +12,7 @@ function App() {
       <div>
         <SideNav />
         <Routes>
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/games" element={<ChooseGames />} />
           <Route path="games/easy" element={<SudokuGame size={6} />} />
           <Route path="games/normal" element={<SudokuGame/>} />
