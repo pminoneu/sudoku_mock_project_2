@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Cell from './components/cell.jsx'
 import { generateBoard } from './components/board.jsx'
 import CustomButton from './components/components.jsx'
+import isValidMove from './checks_valid.jsx'
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
                 colIndex={colIndex}
                 editable={initialBoard[rowIndex]?.[colIndex] === 0}
                 onValueChange={handleValueChange}
+                // checks validity of move
               />
             ))}
           </div>
