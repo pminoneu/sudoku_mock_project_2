@@ -13,10 +13,9 @@ function App() {
         <SideNav />
         <Routes>
           <Route path="/home" element={<HomePage />} />
-          <Route path="/game" element={<SudokuGame />} />
           <Route path="/games" element={<ChooseGames />} />
           <Route path="games/easy" element={<SudokuGame size={6} />} />
-          <Route path="games/hard" element={<SudokuGame size={9} />} />
+          <Route path="games/normal" element={<SudokuGame/>} />
         </Routes>
       </div>
     </Router>
