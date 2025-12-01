@@ -6,6 +6,7 @@ import HomePage from './home_page.jsx'
 import ChooseGames from './choose_games.jsx'
 import Login from './login.jsx'
 import Rules from './rules.jsx'
+import Scoreboard from './scoreboard.jsx'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="games/normal" element={<SudokuGame/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/rules" element={<Rules/>} />
+          <Route path="/scores" element={<Scoreboard/>} />
         </Routes>
       </div>
     </Router>

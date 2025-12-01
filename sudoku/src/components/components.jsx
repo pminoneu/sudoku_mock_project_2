@@ -34,7 +34,7 @@ export function SideNav() {
         <Link to="/login">Login</Link>
         <Link to="/games">Select Game</Link>
         <Link to="/rules">Rules</Link>
-        <Link to="/scoreboard">Scoreboard</Link>
+        <Link to="/scores">Scoreboard</Link>
     </div>
   );
 }
