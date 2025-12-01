@@ -4,6 +4,8 @@ import { SudokuGame } from './components/board.jsx'
 import { SideNav } from './components/components.jsx'
 import HomePage from './home_page.jsx'
 import ChooseGames from './choose_games.jsx'
+import Login from './login.jsx'
+import Rules from './rules.jsx'
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
           <Route path="/games" element={<ChooseGames />} />
           <Route path="games/easy" element={<SudokuGame size={6} />} />
           <Route path="games/normal" element={<SudokuGame/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/rules" element={<Rules/>} />
         </Routes>
       </div>
     </Router>

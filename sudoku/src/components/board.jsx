@@ -32,7 +32,6 @@ export function SudokuGame({ size = 9 }) {
     });
   };
 
-  // Move all the JSX for the sudoku board here
   return (
     <div>
       <h1>My Sudoku Game</h1>

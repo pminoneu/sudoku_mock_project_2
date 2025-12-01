@@ -32,7 +32,7 @@ export function SideNav() {
     <div className="sidenav bebas-neue-regular sidenav-font">
         <Link to="/">Home</Link>
         <Link to="/login">Login</Link>
-        <Link to="/game">Play</Link>
+        <Link to="/games">Select Game</Link>
         <Link to="/rules">Rules</Link>
         <Link to="/scoreboard">Scoreboard</Link>
     </div>
