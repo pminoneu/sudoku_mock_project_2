@@ -4,7 +4,8 @@ import React from 'react';
 
 function isValidMove(board, row, col, value) {
   const size = board.length;
-  const boxSize = size === 9 ? 3 : 2;
+  const rowBoxSize = size === 6 ? 2 : 3;
+  const colBoxSize = size === 6 ? 3 : 3;
 
   const invalidMove = false;
     const validMove = true;
@@ -24,11 +25,11 @@ function isValidMove(board, row, col, value) {
   }
 
   // Check box
-  const boxRowStart = Math.floor(row / boxSize) * boxSize;
-  const boxColStart = Math.floor(col / boxSize) * boxSize;
+  const boxRowStart = Math.floor(row / rowBoxSize) * rowBoxSize;
+  const boxColStart = Math.floor(col / colBoxSize) * colBoxSize;
 
-  for (let i = boxRowStart; i < boxRowStart + boxSize; i++) {
-    for (let j = boxColStart; j < boxColStart + boxSize; j++) {
+  for (let i = boxRowStart; i < Math.min(size, boxRowStart + rowBoxSize); i++) {
+    for (let j = boxColStart; j < Math.min(size, boxColStart + colBoxSize); j++) {
       if (board[i][j] === value) {
         return false;
       }

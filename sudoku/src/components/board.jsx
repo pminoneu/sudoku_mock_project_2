@@ -3,20 +3,26 @@ import Cell from './cell.jsx';
 import CustomButton from './components.jsx';
 import isValidMove from '../checks_valid.jsx';
 
-// NEW COMPONENT - Add this above your App function
+
 export function SudokuGame({ size = 9 }) {
   const [board, setBoard] = useState([]);
   const [initialBoard, setInitialBoard] = useState([]);
   const [cellStatus, setCellStatus] = useState([]);
+  const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
     const newBoard = generateBoard(size);
     setBoard(newBoard);
     setInitialBoard(newBoard);
     setCellStatus(newBoard.map(row => row.map(() => '')));
+    setSeconds(0);
   }, [size]);
 
-  // Move handleValueChange function here too
+  useEffect(() => {
+    const id = setInterval(() => setSeconds((s) => s + 1), 1000);
+    return () => clearInterval(id);
+  }, []);
+
   const handleValueChange = (rowIndex, colIndex, newValue) => {
     setBoard(prevBoard => {
       const updatedBoard = prevBoard.map(row => [...row]);
@@ -35,6 +41,11 @@ export function SudokuGame({ size = 9 }) {
   return (
     <div>
       <h1>My Sudoku Game</h1>
+      <div className = "center-Container">
+      <div className="timer">
+        Time: {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, '0')}
+      </div>
+      </div>
       <div className="sudoku-board">
         {board.map((row, rowIndex) => (
           <div className="container" key={rowIndex}>
@@ -60,6 +71,7 @@ export function SudokuGame({ size = 9 }) {
             setBoard(newBoard);
             setInitialBoard(newBoard);
             setCellStatus(newBoard.map(row => row.map(() => '')));
+            setSeconds(0);
           }}
         />
       </div>
@@ -108,13 +120,14 @@ function sudokuBoard(size) {
       }
       if (conflict) continue;
       
-      // Check box
-      const boxSize = size === 9 ? 3 : 2;
-      const boxRowStart = Math.floor(randomRow / boxSize) * boxSize;
-      const boxColStart = Math.floor(randomCol / 3) * 3;
+      // Check box (2x3 for 6x6, 3x3 for 9x9; clamp to bounds for other sizes)
+      const rowBoxSize = size === 6 ? 2 : 3;
+      const colBoxSize = size === 6 ? 3 : 3;
+      const boxRowStart = Math.floor(randomRow / rowBoxSize) * rowBoxSize;
+      const boxColStart = Math.floor(randomCol / colBoxSize) * colBoxSize;
       
-      for (let m = boxRowStart; m < boxRowStart + boxSize; m++) {
-        for (let n = boxColStart; n < boxColStart + 3; n++) {
+      for (let m = boxRowStart; m < Math.min(size, boxRowStart + rowBoxSize); m++) {
+        for (let n = boxColStart; n < Math.min(size, boxColStart + colBoxSize); n++) {
           if (board[m][n] === randomNum) {
             conflict = true;
             break;

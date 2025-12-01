@@ -19,6 +19,7 @@ function App() {
           <Route path="/games" element={<ChooseGames />} />
           <Route path="games/easy" element={<SudokuGame size={6} />} />
           <Route path="games/normal" element={<SudokuGame/>} />
+          <Route path="/games/supereasy" element={<SudokuGame size={3} />} />
           <Route path="/login" element={<Login/>} />
           <Route path="/rules" element={<Rules/>} />
           <Route path="/scores" element={<Scoreboard/>} />
